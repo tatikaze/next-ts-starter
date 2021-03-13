@@ -5,7 +5,7 @@ import { ActionType } from '~/types'
 
 export const RootContext = React.createContext(initialState)
 export const DispatchContext = React.createContext(
-  (() => true) as React.Dispatch<ActionType>
+  (() => true) as React.Dispatch<ActionType>,
 )
 
 export const RootProvider: React.FC = ({ children }) => {

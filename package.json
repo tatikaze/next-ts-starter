@@ -7,9 +7,10 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write .",
+    "admin:init": "node plugins/user-init.js",
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "lint:fix": "eslint --fix . --ext ts --ext tsx --ext js",
-		"lint-staged": "lint-staged"
+    "lint-staged": "lint-staged"
   },
   "lint-staged": {
     "*.{js, jsx, ts, tsx}": [
@@ -18,10 +19,14 @@
   },
   "pre-commit": "lint-staged",
   "dependencies": {
+    "dotenv": "^8.2.0",
+    "firebase": "^8.3.0",
+    "firebase-admin": "^9.5.0",
     "next": "10.0.8",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "ts-node": "^9.1.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.32",
