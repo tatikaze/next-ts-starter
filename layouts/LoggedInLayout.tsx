@@ -1,15 +1,18 @@
 import React from 'react'
 import { LoggedIn } from '~/components/common/LoggedIn'
+import { useUser } from '~/store/actions'
+import { Header } from '~/components/common/Header'
 
 type Props = {
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 export const LoggedInLayout: React.FC<Props> = (props: Props) => {
+  const { user, loading } = useUser()
   return (
     <>
-      <LoggedIn>
-        <h1>{process.env.title}</h1>
+      <LoggedIn user={user} loading={loading}>
+        <Header user={user} loading={loading} />
         {props.children}
       </LoggedIn>
     </>
