@@ -1,12 +1,13 @@
 import React from 'react'
 import { LoggedInLayout } from '~/layouts/LoggedInLayout'
+import { HelloRequest } from '~/components/users/HelloRequest'
 
-const UserIndex: React.FC = () => {
+const UsersIndex: React.FC = () => {
   return (
-    <>
-      <LoggedInLayout>user page</LoggedInLayout>
-    </>
+    <LoggedInLayout>
+      <HelloRequest />
+    </LoggedInLayout>
   )
 }
 
-export default UserIndex
+export default UsersIndex
