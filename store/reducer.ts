@@ -7,5 +7,10 @@ export const reducer = (state: RootState, action: ActionType): RootState => {
         ...state,
         count: action.payload.count + 1,
       }
+    case 'SET_TOKEN':
+      return {
+        ...state,
+        token: action.payload.token,
+      }
   }
 }
