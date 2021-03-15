@@ -1,11 +1,12 @@
 import firebase from 'firebase/app'
+import 'firebase/auth'
 import firebaseConfig from './firebase-key'
 
-let _app = null
+let _app: firebase.app.App = null
 
 export const getApp = (): firebase.app.App => {
   if (_app) return _app
-  if (firebase.app.length > 0) {
+  if (firebase.apps.length > 0) {
     return (_app = firebase.app())
   } else {
     return (_app = firebase.initializeApp(firebaseConfig))
