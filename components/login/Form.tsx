@@ -12,10 +12,20 @@ export const LoginForm: React.FC = () => {
   const auth = getAuth()
   const router = useRouter()
   const { register, handleSubmit } = useForm()
-  const onSubmit = (data: LoginFormData) => {
-    auth
-      .signInWithEmailAndPassword(data.email, data.password)
-      .then(() => router.push('/users'))
+  const onSubmit = async (data: LoginFormData) => {
+    try {
+      const login = await auth
+        .createUserWithEmailAndPassword(data.email, data.password)
+        .then((s) => {
+          router.push('/users')
+        })
+    } catch {
+      const create = await auth
+        .signInWithEmailAndPassword(data.email, data.password)
+        .then((s) => {
+          router.push('/users')
+        })
+    }
   }
 
   return (

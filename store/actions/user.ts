@@ -22,13 +22,14 @@ export const useUser = (): UseUser => {
 
   const dispatch = useContext(DispatchContext)
 
-  const setToken = (token: firebase.auth.IdTokenResult) =>
+  const setToken = (token: firebase.auth.IdTokenResult) => {
     dispatch({
       type: 'SET_TOKEN',
       payload: {
         token: token,
       },
     })
+  }
 
   return { user, loading, error, token }
 }

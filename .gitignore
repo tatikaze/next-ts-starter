@@ -28,6 +28,7 @@ yarn-error.log*
 firebase-admin-key.js
 firebase-admin-key.json
 firebase-key.js
+firebase-key.ts
 firebase-key.json
 
 # local env files
@@ -38,3 +39,4 @@ firebase-key.json
 
 # vercel
 .vercel
+.env
