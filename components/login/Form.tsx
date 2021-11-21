@@ -20,11 +20,14 @@ export const LoginForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input name="email" type="email" ref={register} placeholder="email" />
       <input
-        name="password"
+        {...register('email', { required: true })}
+        type="email"
+        placeholder="email"
+      />
+      <input
+        {...register('password', { required: true })}
         type="password"
-        ref={register}
         placeholder="password"
       />
       <input type="submit" />

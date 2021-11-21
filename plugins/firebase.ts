@@ -1,6 +1,6 @@
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import firebaseConfig from './firebase-key'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
+import { firebaseConfig } from './firebase-key'
 
 let _app: firebase.app.App = null
 
