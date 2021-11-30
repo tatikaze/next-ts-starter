@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import type firebase from 'firebase'
+import type { User } from 'firebase/auth'
 
 type Props = {
-  user: firebase.User
+  user: User
   loading: boolean
   children: React.ReactNode
 }

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useUser } from '~/store/actions'
+import { useUser } from '~/hooks/resources'
 import { LoginForm } from '~/components/login/Form'
 
 const LoginPage: React.FC = () => {

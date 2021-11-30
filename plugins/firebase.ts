@@ -1,18 +1,16 @@
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/auth'
+import { initializeApp, FirebaseApp } from 'firebase/app'
+import { getAuth, Auth } from 'firebase/auth'
+
 import { firebaseConfig } from './firebase-key'
 
-let _app: firebase.app.App = null
+let _app: FirebaseApp = null
 
-export const getApp = (): firebase.app.App => {
+export const getApp = (): FirebaseApp => {
   if (_app) return _app
-  if (firebase.apps.length > 0) {
-    return (_app = firebase.app())
-  } else {
-    return (_app = firebase.initializeApp(firebaseConfig))
-  }
+  return (_app = initializeApp(firebaseConfig))
 }
 
-export const getAuth = (): firebase.auth.Auth => {
-  return getApp().auth()
+export const getAuthInstance = (): Auth => {
+  getApp()
+  return getAuth()
 }
