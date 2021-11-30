@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "run-p dev:*",
+    "build": "next build & aspida",
     "start": "next start",
+    "dev:next": "next dev",
+    "dev:aspida": "aspida --watch",
     "format": "prettier --write .",
     "admin:init": "node plugins/user-init.js",
     "lint": "eslint . --ext ts --ext tsx --ext js",
@@ -19,6 +21,7 @@
   },
   "pre-commit": "lint-staged",
   "dependencies": {
+    "@aspida/axios": "^1.7.1",
     "@chakra-ui/react": "^1.7.2",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
@@ -52,6 +55,7 @@
     "lint-staged": "^10.5.4",
     "pre-commit": "^1.2.2",
     "prettier": "^2.2.1",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.3",
+    "yarn-run-all": "^3.1.1"
   }
 }
