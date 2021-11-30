@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import { useUser } from '~/store/actions'
+import { Button } from '@chakra-ui/react'
+import { useUser } from '~/hooks/resources'
 
 export const HelloRequest: React.FC = () => {
   const { token } = useUser()
@@ -13,5 +14,9 @@ export const HelloRequest: React.FC = () => {
       })
       .then((res) => console.log(res.data))
   }
-  return <button onClick={handleSubmit}>submit</button>
+  return (
+    <Button colorScheme="blue" onClick={handleSubmit}>
+      テスト通信
+    </Button>
+  )
 }

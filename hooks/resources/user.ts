@@ -1,18 +1,19 @@
 import { useEffect, useContext } from 'react'
+import type { Auth, User, IdTokenResult } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import firebase from 'firebase'
-import { RootContext, DispatchContext } from '../index'
-import { getAuth } from '~/plugins/firebase'
+import { RootContext, DispatchContext } from '~/store/index'
+import { getAuthInstance } from '~/plugins/firebase'
 
 type UseUser = {
-  user: firebase.User
+  user: User
   loading: boolean
-  error: firebase.auth.Error
-  token: firebase.auth.IdTokenResult
+  error: Error
+  token: IdTokenResult
 }
 
 export const useUser = (): UseUser => {
-  const [user, loading, error] = useAuthState(getAuth())
+  const auth: Auth = getAuthInstance()
+  const [user, loading, error] = useAuthState(auth)
   const { token } = useContext(RootContext)
   useEffect(() => {
     if (user) {
@@ -22,7 +23,7 @@ export const useUser = (): UseUser => {
 
   const dispatch = useContext(DispatchContext)
 
-  const setToken = (token: firebase.auth.IdTokenResult) =>
+  const setToken = (token: IdTokenResult) =>
     dispatch({
       type: 'SET_TOKEN',
       payload: {

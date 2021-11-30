@@ -1,6 +1,6 @@
 import React from 'react'
 import { LoggedIn } from '~/components/common/LoggedIn'
-import { useUser } from '~/store/actions'
+import { useUser } from '~/hooks/resources'
 import { Header } from '~/components/common/Header'
 
 type Props = {

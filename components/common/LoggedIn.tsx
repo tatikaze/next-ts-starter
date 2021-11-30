@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import type firebase from 'firebase'
+import type firebase from 'firebase/compat'
 
 type Props = {
   user: firebase.User

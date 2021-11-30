@@ -1,7 +1,8 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
-import { getAuth } from '~/plugins/firebase'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuthInstance } from '~/plugins/firebase'
 
 export type LoginFormData = {
   email: string
@@ -9,13 +10,13 @@ export type LoginFormData = {
 }
 
 export const LoginForm: React.FC = () => {
-  const auth = getAuth()
+  const auth = getAuthInstance()
   const router = useRouter()
   const { register, handleSubmit } = useForm()
   const onSubmit = (data: LoginFormData) => {
-    auth
-      .signInWithEmailAndPassword(data.email, data.password)
-      .then(() => router.push('/users'))
+    signInWithEmailAndPassword(auth, data.email, data.password).then(() => {
+      router.push('/users')
+    })
   }
 
   return (
