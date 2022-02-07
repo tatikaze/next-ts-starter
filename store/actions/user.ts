@@ -1,28 +1,30 @@
 import { useEffect, useContext } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import firebase from 'firebase'
+import type { User, AuthError, IdTokenResult } from 'firebase/auth'
 import { RootContext, DispatchContext } from '../index'
-import { getAuth } from '~/plugins/firebase'
+import { getAuthInstance } from '~/plugins/firebase'
 
 type UseUser = {
-  user: firebase.User
+  user: User
   loading: boolean
-  error: firebase.auth.Error
-  token: firebase.auth.IdTokenResult
+  error: AuthError
+  token: IdTokenResult
 }
 
 export const useUser = (): UseUser => {
-  const [user, loading, error] = useAuthState(getAuth())
+  const [user, loading, error] = useAuthState(getAuthInstance())
   const { token } = useContext(RootContext)
   useEffect(() => {
     if (user) {
-      user.getIdTokenResult(true).then((token) => setToken(token))
+      user
+        .getIdTokenResult(true)
+        .then((token: IdTokenResult) => setToken(token))
     }
   }, [user])
 
   const dispatch = useContext(DispatchContext)
 
-  const setToken = (token: firebase.auth.IdTokenResult) => {
+  const setToken = (token: IdTokenResult) => {
     dispatch({
       type: 'SET_TOKEN',
       payload: {

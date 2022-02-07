@@ -1,7 +1,11 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
-import { getAuth } from '~/plugins/firebase'
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth'
+import { getAuthInstance } from '~/plugins/firebase'
 
 export type LoginFormData = {
   email: string
@@ -9,22 +13,24 @@ export type LoginFormData = {
 }
 
 export const LoginForm: React.FC = () => {
-  const auth = getAuth()
+  const auth = getAuthInstance()
   const router = useRouter()
   const { register, handleSubmit } = useForm()
   const onSubmit = async (data: LoginFormData) => {
     try {
-      const login = await auth
-        .createUserWithEmailAndPassword(data.email, data.password)
-        .then((s) => {
-          router.push('/users')
-        })
+      await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password,
+      ).then(() => {
+        router.push('/users')
+      })
     } catch {
-      const create = await auth
-        .signInWithEmailAndPassword(data.email, data.password)
-        .then((s) => {
+      await signInWithEmailAndPassword(auth, data.email, data.password).then(
+        () => {
           router.push('/users')
-        })
+        },
+      )
     }
   }
 

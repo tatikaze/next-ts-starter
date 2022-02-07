@@ -13,5 +13,10 @@ export const HelloRequest: React.FC = () => {
       })
       .then((res) => console.log(res.data))
   }
-  return <button onClick={handleSubmit}>submit</button>
+  return (
+    <>
+      <button onClick={handleSubmit}>テスト通信</button>
+      <div>{token.token}</div>
+    </>
+  )
 }

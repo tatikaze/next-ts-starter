@@ -1,10 +1,10 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import { getAuth } from '~/plugins/firebase'
+import { getAuthInstance } from '~/plugins/firebase'
 
 export const Logout: React.FC = () => {
   const router = useRouter()
-  const auth = getAuth()
+  const auth = getAuthInstance()
 
   const onLogout = () => {
     auth.signOut()
