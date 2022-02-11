@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ##### Create the `firebase-key.js` file in the `plugins/` directory
 
-> Copy the `service.json` from Firebase
+> Copy the `Configuration Object` from Firebase
 
 ```
 export const firebaseConfig = {
