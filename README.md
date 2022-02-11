@@ -2,7 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-> Create the `firebase-key.js` file in the `plugins/` directory
+##### Create the `firebase-key.js` file in the `plugins/` directory
+
 > Copy the `service.json` from Firebase
 
 ```
