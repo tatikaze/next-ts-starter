@@ -2,18 +2,24 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+```bash
+yarn dev
+```
+
+
+## Initialize Admin User
+
+Use this if an admin API exists
 
 ### env
+
 ```yaml
 DEFAULT_USER_EMAIL: email
 DEFAULT_USER_PASSWORD: password
 ```
 
-```bash
-npm run admin:init & npm run dev
-# or
-npm admin:init & yarn dev
+```
+yarn admin:init
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
